@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [
+    {name = "wzy", email = "lhwzy99@163.com"},
+]
+name = "FreeNeRF"
+description = "FreeNeRF"
+readme = "README.md"
+license = {text = "BSD 3-Clause"}
+dependencies=[
+    "nerfstudio>=0.2.0"
+]
+dynamic = ["version"]
+
+[project.entry-points."nerfstudio.method_configs"]
+freenerf = "FreeNeRF.free_nerf_config:free_nerf_method"
+
+[tool.setuptools]
+include-package-data = true
+packages = [
+    "FreeNeRF"
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "FreeNeRF.__version__" }
+
